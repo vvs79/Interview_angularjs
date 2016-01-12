@@ -1,0 +1,5 @@
+-unless @template.questions.empty?
+  table
+    -@template.questions.each do |q|
+      tr
+        td.name = q.content

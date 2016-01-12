@@ -1,0 +1,28 @@
+- provide(:title, 'All interviews')
+.container.content-area ng-app="Interview"
+  h1
+    | All interviews
+  div ng-controller="InterviewCtrl"
+    .row  
+      = render 'layouts/messages'
+    .row
+      .col-sm-3  
+        = link_to 'New interview', new_interview_path, class: 'btn btn-md btn-success'
+    br     
+    table.table.table-bordered.table-hover
+      tr.active
+        th width="5%"
+          h4 Id
+        th width="12%"
+          h4 Target level
+        th width="15%"
+          h4 Template
+        th width="23%"
+          h4 Interviewer
+        th width="25%"
+          h4 Candidate
+        th width="15%"
+          h4 Date
+        th colspan="2" width="5%"
+          h4 Action
+      = render 'interview'

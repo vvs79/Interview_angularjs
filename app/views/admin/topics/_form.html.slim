@@ -1,0 +1,18 @@
+.form-group
+  = form_for [:admin, @topic], html: { multipart: true } do |f|
+    = render 'shared/error_messages', object: f.object
+    .field
+      = f.label :title
+      br
+      = f.text_field :title, class: "form-control", placeholder: "Enter topics title"
+      = f.label :image
+      br
+      .fileUpload.btn.btn-primary
+        span Upload
+        = f.file_field :image, class: "fileUpload upload"
+      br
+      p#notice
+        = notice
+    .actions.row
+      = f.submit 'Confirm', class: "btn btn-md btn-success col-md-4 col-md-offset-4"
+     

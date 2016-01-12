@@ -1,0 +1,17 @@
+tr.info ng-repeat="interview in interviews"
+  td 
+    | {{interview.id}}
+  td
+    | {{interview.target_level}}
+  td.center
+    | {{interview.template_id}}
+  td.center
+    | {{interview.user_id}}
+  td.center
+    | {{interview.firstname + ' ' + interview.lastname}}
+  td
+    | {{interview.updated_at | date : format : timezone}}
+  td
+    a ng-click="removeInterview(interview)"
+      button
+        | Delete

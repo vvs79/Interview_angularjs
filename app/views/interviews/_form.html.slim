@@ -1,0 +1,20 @@
+.form-group
+  = form_for @interview, html: { multipart: true } do |f|
+    = render 'shared/error_messages', object: f.object
+    = f.label :firstaname, "First name"
+    = f.text_field :firstname, :placeholder => "First name", class: 'form-control'
+    = f.label :lastaname, "Last name"
+    = f.text_field :lastname, :placeholder => "Last name", class: 'form-control'
+    = f.label 'Target level'
+    .form-group
+      .btn-group data-toggle="buttons"
+        - Interview::TARGET_LEVELS.each do |val|
+          - if @interview.target_level == val
+            - choosen = "active"
+          = f.label :target_level, value: val, class: "btn btn-default radio-label #{choosen}" do
+            = f.radio_button :target_level, val, class:"form-radio question"
+            | #{val}
+    = f.label :template_id, "Template"
+    = f.collection_select(:template_id, ::Template.all, :id, :name, {:prompt => 'Select a template', :disabled => 'Select a template'}, {class: 'form-control'})
+    = f.text_field :user_id, :value => current_user.id
+    = f.submit yield(:button_text), class: "btn btn-md btn-success col-md-4 col-md-offset-4"

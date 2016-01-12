@@ -1,0 +1,12 @@
+- provide(:title, @template.name)
+.container.content-area
+  h1.center.jumbotron = @template.name
+  = render 'layouts/messages'
+  h3.jumbotron
+    | Number of questions in #{@template.name} template - #{@template.questions.count}
+  ul.questions
+    -@template.questions.each do |q|
+      li = q.content
+  p.center
+    = link_to edit_template_path(@template), class: "btn btn-sm btn-warning" do
+      i.glyphicon.glyphicon-edit Edit

@@ -1,0 +1,11 @@
+development:
+  access_key_id: 'AKIAJYQP2SFJGSUVDBYA'
+  secret_access_key: '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'
+
+test:
+  access_key_id: 'AKIAJYQP2SFJGSUVDBYA'
+  secret_access_key: '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'
+
+production:
+  access_key_id: 'AKIAJYQP2SFJGSUVDBYA'
+  secret_access_key: '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'

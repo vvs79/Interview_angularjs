@@ -1,0 +1,19 @@
+- provide(:title, 'Show question')
+.container.content-area
+  h1.center
+    = link_to @topic.title, admin_topic_path(@topic)
+  .row
+    = render 'layouts/messages'
+    .col-md-12.btn-group
+      = link_to 'Edit question', edit_admin_question_path, class: 'btn btn-md btn-warning'
+      = link_to 'Delete question', admin_question_path(@question), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'   
+  h4.center
+    | Question:
+  .q-width
+      = render 'admin/questions/level', question: @question      
+  .well.q-width
+    = @question.content
+  h4.center
+    | Answer:
+  .well.q-width
+    = @question.answer

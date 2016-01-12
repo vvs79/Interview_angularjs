@@ -1,0 +1,14 @@
+- provide(:title, 'Forgot your password?')
+.intro-header
+  .intro-message
+    h2
+      | Forgot your password?
+    .form.col-md-4.col-md-offset-4
+      = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+        = devise_error_messages!
+        = render 'layouts/messages'
+        = f.email_field :email, autofocus: true, :placeholder => "Email", class: "form-control"
+        .actions.row
+          = f.submit "Send me reset password instructions", class: "btn btn-md btn-primary"
+      h4
+        = render "devise/shared/links"

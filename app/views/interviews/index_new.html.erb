@@ -1,0 +1,36 @@
+<div ng-app="Interview" class="container content-area">
+  <h1>All Interviews</h1>
+  <br>
+  <div ng-controller="InterviewCtrl">
+
+    <table class="interviewes">
+      <tbody>
+        <tr ng-repeat="interview in interviews">
+          <td>{{interview.id}}</td>
+          <td>{{interview.target_level}}</td>
+          <td>{{interview.template_id}}</td>
+          <td>{{interview.firstname +' '+ interview.lastname}}</td>
+          <td>{{interview.user_id}}</td>
+          <td><a ng-click="removeInterview(interview)">
+            <button>Delete</button></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <hr/>
+    <form ng-submit="addInterview()">
+      <input type="text" ng-model="newInterview.firstname">
+      <br>
+      <input type="text" ng-model="newInterview.lastname">
+      <br>
+      <input type="text" ng-model="newInterview.target_level">
+      <br>
+      <input type="text" ng-model="newInterview.template_id">
+      <br>
+      <input type="text" ng-model="newInterview.user_id">
+      <br>
+      <input type="submit" value="Start Interview">
+    </form>
+    <hr/>
+  </div>
+</div>

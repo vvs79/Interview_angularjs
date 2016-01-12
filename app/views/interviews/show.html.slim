@@ -1,0 +1,61 @@
+- provide(:title, 'Interview')
+.container.content-area 
+  .row.summary-info
+    .col-sm-6
+      h3 
+        | Interview with 
+      h2 
+        = @interview.firstname
+        |  
+        = @interview.lastname
+    .col-sm-6 
+      h3
+        | Information: 
+      table.table.table-condensed
+        tr
+          td
+            | Date:          
+          td
+            = @interview.updated_at.localtime.strftime("%m/%d/%Y at %r")
+        tr
+          td
+            | Template:
+          td
+            = link_to @interview.template.name,  template_path(@interview.template)
+        tr
+          td
+            | Target level:          
+          td
+            = @interview.target_level
+  .dropdown id='summary-drop-list'
+    button.btn.btn-primary.dropdown-toggle data-toggle="dropdown" type="button" 
+      | Jump to 
+      span.caret
+    ul.dropdown-menu.scrollable-list
+      - @questions.each do |q|
+        li
+          a href="#question#{q.id}"
+            |#{q.id}
+  - @questions.each do |q|
+    .summary-card id="question#{q.id}"
+      .progress
+        .progress-bar class = "progress-bar-#{bar_color('green')}" aria-valuemax="100" role="progressbar" style="width:100%" 
+        //above will be question.mark as parametr when conducting interview will be merged
+      .row
+        .col-sm-6 
+          h4 
+            | Question: 
+            = q.id
+          .well
+            = q.content
+        .col-sm-6 
+          h4
+            | Answer
+          .well
+            = q.answer    
+        .col-sm-12 
+          h4
+            | Comment
+          .well
+            //here will be comment when conducting interview will be merged
+

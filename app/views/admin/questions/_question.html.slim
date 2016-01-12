@@ -1,0 +1,21 @@
+-@questions.each do |question|
+  tr.info
+    td
+      = link_to admin_question_path(question), rel: 'tooltip', title: 'Show question'
+        = question.id
+    td
+      = link_to admin_topic_path(question.topic_id), rel: 'tooltip', title: 'Show topic'
+        = question.topic.title
+    td
+      = link_to admin_question_path(question), rel: 'tooltip', title: 'Show question'
+        = truncate(question.content, :length => 70)
+    td
+      = link_to admin_question_path(question), rel: 'tooltip', title: 'Show question'
+        = render "admin/questions/level", question: question
+    td
+      = link_to edit_admin_question_path(question), rel: 'tooltip', title: 'Edit question', class: "btn btn-sm btn-primary" do
+        i.glyphicon.glyphicon-edit
+    td
+      = link_to admin_question_path(question), method: :delete, data: { confirm: 'Are you sure?' }, rel: 'tooltip', title: 'Delete question', class: "btn btn-sm btn-danger" do
+        i.glyphicon.glyphicon-remove 
+        

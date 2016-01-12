@@ -1,0 +1,12 @@
+language: ruby
+rvm:
+  - 2.2.3
+services:
+  - mysql
+before_script:
+  - cp config/database.travis.yml config/database.yml
+  - mysql -e 'create database aid_interview_test;'
+script:
+  - RAILS_ENV=test bundle exec rake --trace db:migrate
+  - bundle exec rake test
+  - bundle exec rubocop $TRAVIS_BUILD_DIR

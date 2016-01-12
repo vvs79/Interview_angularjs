@@ -1,0 +1,26 @@
+- provide(:title, 'Admin dashboard')
+.container.content-area
+  = render 'layouts/messages'
+  .row
+    .col-lg-12
+      .page-header
+        h2.center Welcome #{ current_user.first_name }!
+  .row
+    = render 'shared/panel',  title: panel_title(@total_questions, 'Questions'),
+                              link_to_new: new_admin_question_path,
+                              link_to_index: admin_questions_path,
+                              glyphicon: 'glyphicon-question-sign'
+
+    = render 'shared/panel',  title: panel_title(@total_topics, 'Topics'),
+                              link_to_new: new_admin_topic_path,
+                              link_to_index: admin_topics_path,
+                              glyphicon: 'glyphicon-th-list'
+
+    = render 'shared/panel',  title: panel_title(@users.count, 'Users'),
+                              link_to_index: admin_users_path,
+                              glyphicon: 'glyphicon-user'
+
+    = render 'shared/panel',  title: panel_title(@users.waiting_approval.count, 
+                                     "#{'User'.pluralize(@users.waiting_approval.count)} waiting approval"),
+                              link_to_index: admin_users_path(waiting_approval: true),
+                              glyphicon: 'glyphicon-time'

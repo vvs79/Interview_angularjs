@@ -1,0 +1,24 @@
+- provide(:title, 'All topics')
+.container.content-area
+  h1
+    | All topics
+  .row  
+    = render 'layouts/messages'  
+  .row
+    .col-sm-3.btn-group
+      = link_to 'Create new topic', new_admin_topic_path, class: 'btn btn-md btn-success'
+  .col-sm-12
+    .center
+      = will_paginate
+  br 
+  ul.list-unstyled
+    .row
+      - @topics.each do |t|
+        li.col-xs-12.col-sm-3
+          .topic-block
+            = link_to image_tag(t.image.url(:thumb),\
+             rel: 'tooltip', title: 'Show topic', class: 'img-rounded'), admin_topic_path(t)
+            div
+              = link_to admin_topic_path(t) do
+                = t.title
+  

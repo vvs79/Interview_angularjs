@@ -1,0 +1,5 @@
+- param = bar_param(question.level)
+.progress
+  .progress-bar class = "progress-bar-#{param[:color]}" aria-valuemax="100" role="progressbar" style="width:#{param[:width]}"
+  	= "#{param[:level]}"
+	

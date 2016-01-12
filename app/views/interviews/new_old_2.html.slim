@@ -1,0 +1,33 @@
+- provide(:title, 'New interview')
+/!- provide(:button_text, 'Start interview')
+.container.content-area ng-app="Interview"
+  h1.center
+    | New interview
+  .form-group ng-controller="InterviewCtrl"
+    form ng-submit="addInterview()"
+      br
+      label
+        | First name
+      br
+      input type="text" placeholder="First name" class="form-control" ng-model="newInterview.firstname"
+      br
+      label_tag
+        | Last name
+      br
+      input type="text" placeholder="Last name" class="form-control" ng-model="newInterview.lastname"
+      br
+      label
+        | Target level
+      br
+      input type="text" placeholder="Select target level" class="form-control" ng-model="newInterview.target_level"
+      br
+      label
+        | Template
+      br
+      input type="text" placeholder="Select template" class="form-control" ng-model="newInterview.template_id"
+      | qw1
+      br
+      input type="text" class="form-control" ng-model="newInterview.user_id"
+      = current_user.id
+      br
+      input type="submit" value=("Start interview") class="btn btn-md btn-success col-md-4 col-md-offset-4"

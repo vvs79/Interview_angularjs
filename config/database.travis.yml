@@ -1,0 +1,6 @@
+
+test:
+  adapter: mysql2
+  username: travis
+  password:
+  database: aid_interview_test

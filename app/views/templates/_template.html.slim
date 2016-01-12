@@ -1,0 +1,12 @@
+tr.info
+  td
+    =link_to template_path(template), rel: 'tooltip', title: 'Show template'
+      = template.name
+  td
+    .btn-toolbar aria-label="..." role="toolbar"
+      = link_to template_path(template), class: "btn btn-sm btn-info" do
+        i.glyphicon.glyphicon-eye-open Show
+      = link_to edit_template_path(template), class: "btn btn-sm btn-warning" do
+        i.glyphicon.glyphicon-edit Edit
+      = link_to template_path(template),   method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger" do
+        i.glyphicon.glyphicon-remove Delete

@@ -1,0 +1,13 @@
+- link_to_new ||= nil
+.col-md-6
+  .panel
+    .partition.partition-grey.core-icon
+      div.glyphicon class=glyphicon
+    .core-content
+        = title
+    .panel-footer.clearfix
+        - if link_to_new
+          = link_to '', link_to_new,
+                    class: "col-xs-6 partition-light-blue glyphicon glyphicon-plus"
+        = link_to '', link_to_index,
+                  class: "#{link_to_new ? 'col-xs-6' : 'col-xs-12'} partition-blue glyphicon glyphicon-chevron-right"

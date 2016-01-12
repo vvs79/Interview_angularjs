@@ -1,0 +1,11 @@
+.form-group
+  = form_for @template do |f|
+    = render 'shared/error_messages', object: f.object
+    h2.bg-info
+      = f.label :name, 'Name:'
+    = f.text_area :name, :placeholder => "Write a template name", class: 'form-control input-lg', rows: 2
+    h2.bg-info
+      = f.label :template, 'Questions:'
+    = f.collection_select :question_ids, Question.all, :id, :content,\
+       {:include_blank => false}, {:multiple => true,  class: 'form-control'}
+    = f.submit yield(:button_text), class: 'btn btn-md btn-success col-md-4 col-md-offset-4'

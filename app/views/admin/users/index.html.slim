@@ -1,0 +1,50 @@
+- provide(:title, 'All users')
+.container.content-area
+  h1 Users
+  .row  
+    = render 'layouts/messages'
+  row
+    = render 'search_form_for'
+  br
+  .col-sm-12
+    .center
+      = will_paginate @users
+
+  table.table.table-bordered.table-hover
+    tr.active
+      th width='5%'
+        h4 #
+      th width="25%"
+        h4 = sort_link(@search, :first_name, 'First Name')
+      th width="25%"
+        h4 = sort_link(@search, :last_name, 'Last Name')
+      th width="30%"
+        h4 = sort_link(@search, :email, 'Email')
+      th width="10%"
+        h4 = sort_link(@search, :approved, 'Approved')
+      th width="5%"
+        h4 = sort_link(@search, :admin, 'Admin')
+    - if @users.empty?
+      .alert.alert-danger.not_found role="alert"
+        a.close data-dismiss="alert" href="#"  × 
+        ul
+          li
+            | Users not found
+    - else
+      - @users.each_with_index do |user, index|
+        tr.info
+          td= index + 1
+          td= user.first_name
+          td= user.last_name
+          td= user.email
+          td.text-center
+            - if user.approved? 
+              i.glyphicon.glyphicon-ok.text-success aria-hidden="true" 
+            - else 
+              = link_to approve_admin_user_path(user), method: :put, class: 'btn btn-sm btn-success', rel: 'tooltip', title: 'Approve user'
+                i.glyphicon.glyphicon-ok
+              = link_to admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger', rel: 'tooltip', title: 'Delete user'
+                i.glyphicon.glyphicon-remove
+          td.text-center
+            - if user.admin?
+              i.glyphicon.glyphicon-ok.text-success aria-hidden="true"

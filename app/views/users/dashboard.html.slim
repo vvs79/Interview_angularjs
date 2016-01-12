@@ -1,0 +1,18 @@
+- provide(:title, 'Interviewers dashboard')
+.container.content-area
+  = render 'layouts/messages'
+  .row
+    .col-lg-12
+      .page-header
+        h2.center Welcome #{ current_user.first_name }!
+  .row
+    = render 'shared/panel',  title: panel_title(@total_templates, 'Templates'),
+                              link_to_new: new_template_path,
+                              link_to_index: templates_path,
+                              glyphicon: 'glyphicon-list-alt'
+
+    = render 'shared/panel',  title: panel_title(@total_interviews, 'Interviews'),
+                              link_to_new: new_interview_path,
+                              link_to_index: interviews_path,
+                              glyphicon: 'glyphicon-briefcase'
+

@@ -1,0 +1,13 @@
+.intro-header
+	.intro-message
+			h1
+			  | Welcome to AID-Interview
+			h3 
+				| Make you interview easier
+				= render 'layouts/messages'
+			hr.intro-divider
+			ul.list-inline
+			  li
+			    = link_to "Sign up", new_user_registration_path, class: "btn btn-lg btn-primary"
+			  li
+			    = link_to "Log in", new_user_session_path, class: "btn btn-lg btn-success"
